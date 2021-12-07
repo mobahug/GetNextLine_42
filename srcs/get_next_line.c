@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/05 13:12:32 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/07 07:39:08 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,30 +33,34 @@ int	get_next_line(const int fd, char **line)
 		return (1);
 	else
 	{
-		while (read(fd, &buffer, BUF_SIZE) != 0)
-			write(1, &buffer, BUF_SIZE);
+		while (read(fd, &buffer, 1) != 0)
+			write(1, &buffer, 1);
 	if (close(fd) == -1)
 		return (1);
 	return (0);
 }
 
+/*
+**
+*/
+
 int	get_next_line(const int fd, char **line)
 {
 	int		fd;
-	char	**linesaver[BUF_SIZE + 1];
+	char	buf[BUF_SIZE + 1];
 
 	if (*line)
 		return (0);
-	*linesaver = (char **)malloc(sizeof(char *) * BUF_SIZE + 1);
-	if (!*linesaver)
+	buf = (char *)malloc(sizeof(char) * BUF_SIZE + 1); //?
+	if (!*buf)
 		return (NULL);
-	fd = open(*linesaver, O_RDONLY);
+	fd = open(*buf, O_RDONLY);
 	if (f == -1)
 		return (1);
 	else
 	{
-		while (read(fd, &buffer, BUF_SIZE) != 0)
-			write(1, &buffer, BUF_SIZE);
+		while (read(fd, buf, BUF_SIZE) != 0)
+			write(1, buf, BUF_SIZE);
 	if (close(fd) == -1)
 		return (1);
 	return (0);
