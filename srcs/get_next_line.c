@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/07 09:25:05 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/07 14:53:59 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ size_t	ft_strlen(const char *s)
 	}
 	return (i);
 }
-
+/*
 int main ()
 {
 	int		fd;
@@ -172,6 +172,7 @@ int main ()
 			ft_putstr(buf);
 		}
 	}
+	free(buf);
 	ft_putnbr(ret);
 	ft_putstr(buf);
 	ft_putstr(buf);
@@ -179,7 +180,8 @@ int main ()
 	if (close(fd) == -1)
 		return (1);
 	return (0);
-}
+}*/
+/*
 **************************************************
 
 static int	ft_get_line(const int fd, char **line)
@@ -196,12 +198,121 @@ static int	ft_get_line(const int fd, char **line)
 		line++;
 		if (line)
 		{
-			
+
 		}
 	}
 
 }
-
+*/
 /*
 **testing_testing_testing
 */
+
+
+
+
+
+
+
+
+
+
+static int	ft_reader(const int fd, char **lines)
+{
+	int		ret;
+	char	*buf;
+
+	buf = (char *)malloc(sizeof(char) * (BUF_SIZE + 1));
+	if (!buf)
+		return (0);
+	fd = open("/Users/ghorvath/Workspace/GNL/srcs/test.txt", O_RDONLY);
+	if (fd == -1)
+		return (1);
+	else
+	{
+		while ((ret = read(fd, buf, BUF_SIZE)))
+		{
+			if ()
+			buf[ret] = '\0';
+			ft_putnbr(ret);
+			ft_putstr(buf);
+		}
+	}
+	free(buf);
+	ft_putnbr(ret);
+	ft_putstr(buf);
+	ft_putstr(buf);
+
+	if (close(fd) == -1)
+		return (1);
+	return (0);
+}
+
+static void	ft_free_line(char **lines, size_t i)
+{
+	while (i--)
+		ft_strdel(&(lines[i]));
+	free(*lines);
+}
+
+static int	ft_get_line(char *line, char **lines, size_t i)
+{
+	char	*start;
+	char	*result;
+	//char	*buf[BUF_SIZE + 1];
+
+	start = line;
+	while (*line != '\n')
+		line++;
+	//line = ft_reader(fd, lines);
+	*line = '\0';
+	result = ft_strdup(start);
+	if (!result)
+	{
+		ft_free_line(lines, i);
+		return (NULL);
+	}
+	return (result);
+}
+
+static int	ft_get_lines(char *s, size_t BUF_SIZE)
+{
+	char	**lines;
+	char	*line;
+	size_t	i;
+
+	i = 0;
+	lines = (char **)malloc(sizeof(char *) * (BUF_SIZE + 1));
+	if (!lines)
+		return (NULL);
+	while (i < BUF_SIZE)
+	{
+		while (*s == '\n' || *s == '\0' || *s--)
+			s++;
+		if (*s)
+		{
+			line = ft_get_line(s, lines, i);
+			if (line == NULL)
+				return (NULL);
+			lines[i++] = line;
+			s = s + (ft_strlen(line) + 1);
+		}
+	}
+	lines[i] = '\0';
+	return (lines);
+}
+
+int	get_next_line(const int fd, char **line)
+{
+	char	**lines;
+	char	*line;
+
+	if (!s)
+		return (0);
+	line = ft_strdup((char *)s);
+	if (!line)
+		return (NULL);
+	lines = ft_get_lines(line, BUF_SIZE);
+	free(line);
+	return (words);
+}
