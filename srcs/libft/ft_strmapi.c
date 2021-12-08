@@ -1,25 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/11 14:35:59 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/18 12:35:47 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+char	*ft_strmapi(char const *s, char	(*f)(unsigned int, char))
+{
+	int		i;
+	char	*str;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	if (s == 0)
+		return (0);
+	str = (char *)malloc(sizeof(char) * ft_strlen(s) + 1);
+	if (s == 0 || str == 0)
+		return (0);
+	i = 0;
+	while (s[i] != '\0')
+	{
+		str[i] = (*f)(i, s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

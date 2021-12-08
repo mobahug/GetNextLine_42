@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/02 11:38:46 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/15 09:44:59 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+char	*ft_strdup(const char *s1)
+{
+	int		i;
+	char	*newletter;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	newletter = 0;
+	newletter = (char *)malloc(sizeof(*s1) * (ft_strlen(s1) + 1));
+	if (newletter == 0)
+		return (0);
+	while (s1[i])
+	{
+		newletter[i] = s1[i];
+		i++;
+	}
+	newletter[i] = '\0';
+	return (newletter);
+}

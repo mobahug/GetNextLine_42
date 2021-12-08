@@ -1,25 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strclr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/09 08:02:53 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/16 10:10:09 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+void	ft_strclr(char *s)
+{
+	int	index;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	if (s != 0)
+	{
+		index = 0;
+		while (s[index] != '\0')
+		{
+			s[index] = '\0';
+			index++;
+		}
+	}
+}

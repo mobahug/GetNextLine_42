@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/12 12:44:45 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/24 12:49:28 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+char	*ft_itoa(int n)
+{
+	char	*str;
+	long	num;
+	int		i;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	num = n;
+	i = ft_number_lenght(num);
+	if (num == 0)
+		return (ft_strdup("0"));
+	str = (char *)malloc(sizeof(char) * (i + 1));
+	if (str == 0)
+		return (0);
+	str[i--] = '\0';
+	if (num < 0)
+	{
+		str[0] = '-';
+		num = num * -1;
+	}
+	while (num > 0)
+	{
+		str[i--] = 48 + (num % 10);
+		num = num / 10;
+	}
+	return (str);
+}

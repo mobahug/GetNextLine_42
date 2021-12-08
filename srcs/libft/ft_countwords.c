@@ -1,25 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_countwords.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/24 12:30:11 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/24 12:41:40 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+size_t	ft_countwords(char const *s, char c)
+{
+	size_t	words;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	words = 0;
+	while (*s != '\0')
+	{
+		while (*s == c)
+			s++;
+		if (*s != '\0')
+		{
+			words++;
+			while (*s != '\0' && *s != c)
+				s++;
+		}
+	}
+	return (words);
+}

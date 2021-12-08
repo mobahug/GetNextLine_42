@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/02 10:47:49 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/16 11:01:58 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include "libft/libft.h"
+int	ft_strcmp(const char *s1, const char *s2)
+{
+	int	i;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	i = 0;
+	while ((s1[i] != '\0' || s2[i] != '\0') && s1[i] == s2[i])
+		i++;
+	return (((unsigned char *)s1)[i] - ((unsigned char *)s2)[i]);
+}
