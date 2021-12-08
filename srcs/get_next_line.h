@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 10:02:43 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/08 10:05:56 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 #include <stdlib.h>
 #include <sys/stat.h>
 #include <sys/types.h>
-#include "libft/libft.h"
 
 int	get_next_line(const int fd, char **line);
 
