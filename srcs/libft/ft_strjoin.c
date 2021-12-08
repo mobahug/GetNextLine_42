@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 09:07:56 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/12 14:19:38 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/29 10:01:59 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <libft/libft.h>
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*result;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	if (!s1 || !s2)
+		return (0);
+	result = malloc((ft_strlen(s1) + ft_strlen(s2)) + 1);
+	if (!result)
+		return (0);
+	if (result)
+	{
+		ft_strcpy(result, s1);
+		ft_strcat(result, s2);
+	}
+	return (result);
+}

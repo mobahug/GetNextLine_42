@@ -6,15 +6,11 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/07 14:53:59 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/08 09:43:43 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <fcntl.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <stdlib.h>
+#include "get_next_line.h"
 
 //#include "libft.h"
 #define BUF_SIZE 100

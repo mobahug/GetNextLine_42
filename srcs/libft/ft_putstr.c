@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 09:07:56 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/10 13:08:15 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/16 11:13:09 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <libft/libft.h>
+void	ft_putstr(char const *s)
+{
+	char	*s_s;
+	int		i;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	s_s = (char *)s;
+	if (s != 0)
+	{
+		i = 0;
+		while (s_s[i] != '\0')
+		{
+			write(1, &s_s[i], 1);
+			i++;
+		}
+	}
+}
