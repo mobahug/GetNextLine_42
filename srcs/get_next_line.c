@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:28:43 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/13 12:56:52 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -344,6 +344,74 @@ static int	get_line(char **string, char **line)
 						//new string will be equal with the tracker, so where we gonna continue to check the text
 		if (*string[0] == '\0')	//once we reach end of line carachter
 								//we free the remaining data, so our trackers //tracker//
+			ft_strdel(string);
+	}
+	else
+		{
+			*line = ft_strdup(*string);
+			ft_strdel(string);
+		}
+	return (1);
+}
+
+
+static int	output(char **string, char **line, int ret, int fd)
+{
+	if (ret < 0)
+		return (-1);			//checking if there is an error
+	else if (ret == 0 || string[fd] == NULL)	//if the file were readed just return 0
+		return (0);
+	else
+		return (get_line($string[fd], line));		//otherwise its geting each of line from getline function
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+static int	get_line(char **string, char **line)
+{
+	int		lenght;
+	char	*tracker;
+
+	lenght = 0;
+	while (*string[lenght] != '\n' && *string[lenght] != '\0')
+		lenght++;
+	if (*string[lenght] == '\n')
+	{
+		*line = ft_strsub(*string, 0, lenght);
+		tracker = ft_strdup(&(*string[lenght + 1]));
+		free(*string);
+		*string = tracker;
+		if (*string[0] == '\0')
 			ft_strdel(string);
 	}
 	else
