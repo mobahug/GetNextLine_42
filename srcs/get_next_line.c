@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:57:40 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/13 14:32:10 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -317,7 +317,6 @@ int	get_next_line(const int fd, char **line)
 **testing/testing/testing
 */
 
-int	get_next_line(const int fd, char **line);
 
 static int	get_line(char **string, char **line)
 {
@@ -362,9 +361,26 @@ static int	error_handling(char **string, char **line, int ret, int fd)
 	else if (ret == 0 || string[fd] == NULL)	//if the file were readed just return 0
 		return (0);
 	else
-		return (get_line($string[fd], line));		//otherwise its geting each of line from getline function
+		return (get_line($string[fd], line));		//otherwise its getting each of line from getline function
 }
 
+
+int	get_next_line(const int fd, char **line)
+{
+	int			ret;
+	static char	*string[FD_SIZE];		//the static variable gonna remember for the previous function call
+	char		buffer[BUF_SIZE + 1];
+	char		*tmp;
+
+	if (fd < 0 || line == NULL)
+		return (-1);
+	while ((ret = read(fd, buffer, BUF_SIZE)) > 0)
+	{
+		buffer[0] = '\0';
+		if (string[fd] == NULL)
+			string[fd] = ft_strdup(buffer);
+	}
+}
 
 
 
