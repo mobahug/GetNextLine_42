@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:56:52 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/13 12:57:40 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -355,7 +355,7 @@ static int	get_line(char **string, char **line)
 }
 
 
-static int	output(char **string, char **line, int ret, int fd)
+static int	error_handling(char **string, char **line, int ret, int fd)
 {
 	if (ret < 0)
 		return (-1);			//checking if there is an error
