@@ -1,1 +1,1 @@
-cp ./$REPO_NAME/srcs/* ./intra-uuid-*
+cp -R ./$REPO_NAME/srcs/* ./intra-uuid-*
