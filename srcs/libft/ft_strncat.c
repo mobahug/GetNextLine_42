@@ -18,10 +18,10 @@ char	*ft_strncat(char *s1, const char *s2, size_t n)
 	unsigned int	j;
 
 	i = 0;
-	while (s1[i] != '\0')
+	while (s1[i])
 		i++;
 	j = 0;
-	while (s2[j] != '\0' && j < n)
+	while (j < n && s2[j])
 	{
 		s1[i + j] = s2[j];
 		j++;
