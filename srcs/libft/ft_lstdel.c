@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:09:16 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/23 07:20:59 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/24 15:06:11 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# define FD_SIZE 8192
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include "libft/libft.h"
+void	ft_lstdel(t_list **alst, void	(*del)(void*, size_t))
+{
+	t_list	*temp;
+	t_list	*list;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	list = *alst;
+	while (list != NULL)
+	{
+		temp = list->next;
+		del(list->content, list->content_size);
+		free(list);
+		list = temp;
+	}
+	*alst = NULL;
+}

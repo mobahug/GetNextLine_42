@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:09:16 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/08 14:14:33 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/15 14:10:43 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# define FD_SIZE 8192
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include "libft/libft.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	char	*s1;
+	int		lenght;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	lenght = ft_strlen(s);
+	s1 = (char *)s;
+	while (lenght >= 0)
+	{
+		if (s1[lenght] == c)
+			return (&(s1[lenght]));
+		lenght--;
+	}
+	return (0);
+}

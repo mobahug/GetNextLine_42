@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/08 09:54:53 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/13 12:22:06 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	get_next_line(const int fd, char **line)
 	return (0);
 }
 */
-
+/*
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
@@ -140,7 +140,7 @@ size_t	ft_strlen(const char *s)
 		i++;
 	}
 	return (i);
-}
+}*/
 /*
 int main ()
 {
@@ -205,7 +205,7 @@ static int	ft_get_line(const int fd, char **line)
 */
 
 
-
+/*
 
 
 
@@ -312,7 +312,44 @@ int	get_next_line(const int fd, char **line)
 	free(line);
 	return (words);
 }
-
+*/
 /*
 **testing/testing
 */
+
+int	get_next_line(const int fd, char **line);
+
+static int	get_line(char **string, char **line)
+{
+	int		lenght;
+	char	*tracker;
+
+	lenght = 0;
+	while (*string[lenght] != '\n' && *string[lenght] != '\0')	//finding lenght of the line
+		lenght++;
+	if (*string[lenght] == '\n')		//once the index is newline
+	{													//then
+		*line = ft_strsub(*string, 0, lenght);	//allocated memory already for the line
+											//lenght already having the number/value until newline
+											//so with this we get 1 line and store on the heap
+											//strsub will start to check the string at the beginning
+											//because we saying it start with 0 so lenght 0, but with 'lenght'
+											//we going until '\n' because that having the value of that already.
+		tracker = ft_strdup(&(*string[lenght + 1]));	//we store the data on the memory //tracker//
+													//what is after the newline on a tracker variable
+													//we will know from where to continue to read the next line
+		free(*string);	//freeing the string so we updating the memory as well where we are at the moment
+						//so this way the computer will now where to continue the storing memory heap stuff inn the line
+		*string = tracker;	//so here we saying we already freed memory and stored, so we start again with the new fresh string
+						//new string will be equal with the tracker, so where we gonna continue to check the text
+		if (*string[0] == '\0')	//once we reach end of line carachter
+								//we free the remaining data, so our trackers //tracker//
+			ft_strdel(string);
+	}
+	else
+		{
+			*line = ft_strdup(*string);
+			ft_strdel(string);
+		}
+	return (1);
+}

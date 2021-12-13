@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/05 12:24:23 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:09:16 by ghorvath         ###   ########.fr       */
+/*   Created: 2021/11/08 07:40:53 by ghorvath          #+#    #+#             */
+/*   Updated: 2021/11/26 14:45:00 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
-# define BUFF_SIZE 8
-# define FD_SIZE 8192
+#include "libft.h"
 
-# include <fcntl.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/stat.h>
-# include <sys/types.h>
-# include "libft/libft.h"
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
+{
+	unsigned char	*string1;
+	unsigned char	*string2;
+	size_t			i;
 
-int	get_next_line(const int fd, char **line);
-
-#endif
+	string1 = (unsigned char *)s1;
+	string2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n)
+	{
+		if (string1[i] != string2[i])
+			return (string1[i] - string2[i]);
+		i++;
+	}
+	return (0);
+}
