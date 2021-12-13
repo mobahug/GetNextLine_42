@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/13 12:22:06 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/13 12:28:43 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -314,7 +314,7 @@ int	get_next_line(const int fd, char **line)
 }
 */
 /*
-**testing/testing
+**testing/testing/testing
 */
 
 int	get_next_line(const int fd, char **line);
