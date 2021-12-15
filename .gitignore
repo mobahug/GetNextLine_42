@@ -1,1 +1,9 @@
 .DS_Store
+a.out
+test1.txt
+test2.txt
+test3.txt
+test4.txt
+get_next_line.h.gch
+main.c
+libft/libft.h.gch
