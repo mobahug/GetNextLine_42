@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/15 12:59:17 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/15 13:16:51 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int	get_next_line(const int fd, char **line)
 
 	if (fd < 0 || line == NULL)
 		return (-1);
-	while ((ret = read(fd, buffer, BUFF_SIZE)) > 0)
+	ret = 1;
+	while (ret > 0)
 	{
+		ret = read(fd, buffer, BUFF_SIZE);
 		buffer[ret] = '\0';
 		if (string[fd] == NULL)
 			string[fd] = ft_strdup(buffer);
