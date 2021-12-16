@@ -6,7 +6,7 @@
 #    By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/13 08:40:43 by ghorvath          #+#    #+#              #
-#    Updated: 2021/11/29 10:27:48 by ghorvath         ###   ########.fr        #
+#    Updated: 2021/12/16 16:42:29 by ghorvath         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS	=	ft_atoi.c		ft_bzero.c		ft_isalnum.c	ft_isalpha.c	\
 			ft_strsub.c		ft_strtrim.c	ft_tolower.c	ft_toupper.c	\
 			ft_isspace.c	ft_lstdel.c		ft_lstdelone.c	ft_countwords.c	\
 			ft_free_words.c	ft_number_lenght.c	ft_lstadd.c	ft_lstiter.c	\
+			ft_putstrcolor.c	ft_color.c	ft_putcharcolor.c
 
 OBJECTS	=	ft_atoi.o		ft_bzero.o		ft_isalnum.o	ft_isalpha.o	\
 			ft_isascii.o	ft_isdigit.o	ft_isprint.o	ft_itoa.o		\
@@ -44,6 +45,7 @@ OBJECTS	=	ft_atoi.o		ft_bzero.o		ft_isalnum.o	ft_isalpha.o	\
 			ft_strsub.o		ft_strtrim.o	ft_tolower.o	ft_toupper.o	\
 			ft_isspace.o	ft_lstdel.o		ft_lstdelone.o	ft_countwords.o	\
 			ft_free_words.o	ft_number_lenght.o	ft_lstadd.o	ft_lstiter.o	\
+			ft_putstrcolor.o	ft_color.o	ft_putcharcolor.o
 
 
 HEADER	=	-c	-I	libft.h

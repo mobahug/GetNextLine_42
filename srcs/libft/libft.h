@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 12:02:36 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/11/29 10:27:34 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/16 16:43:40 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,23 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+/*
+**DEFINE_COLORS
+*/
+
+# define NORMAL		"\x1B[0m"
+# define RED		"\x1B[31m"
+# define GREEN		"\x1B[32m"
+# define YELLOW		"\x1B[33m"
+# define BLUE		"\x1B[34m"
+# define MAGENTA	"\x1B[35m"
+# define CYAN		"\x1B[36m"
+# define WHITE		"\x1B[37m"
+
+/*
+**STRUCTURES
+*/
+
 typedef struct s_list
 {
 	void			*content;
@@ -23,10 +40,12 @@ typedef struct s_list
 	struct s_list	*next;
 }				t_list;
 
+/*
+**FUNCTIONS
+*/
+
 int		ft_atoi(const char *str);
 void	ft_bzero(void *s, size_t n);
-size_t	ft_countwords(char const *s, char c);
-void	ft_free_words(char **words, size_t i);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -46,7 +65,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n);
 void	ft_memdel(void **ap);
 void	*ft_memmove(void *dst, const void *src, size_t len);
 void	*ft_memset(void *b, int c, size_t len);
-int		ft_number_lenght(long nb);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putchar(char c);
 void	ft_putendl_fd(char const *s, int fd);
@@ -83,5 +101,16 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len);
 char	*ft_strtrim(char const *s);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
+
+/*
+**EXTRA_FUNCTIONS
+*/
+
+void	ft_color(char *s);
+void	ft_putstrcolor(char *str, char *color);
+void	ft_putcharcolor(char c, char *color);
+size_t	ft_countwords(char const *s, char c);
+void	ft_free_words(char **words, size_t i);
+int		ft_number_lenght(long nb);
 
 #endif
