@@ -6,7 +6,7 @@
 /*   By: ghorvath <ghorvath@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/05 12:26:10 by ghorvath          #+#    #+#             */
-/*   Updated: 2021/12/17 15:34:16 by ghorvath         ###   ########.fr       */
+/*   Updated: 2021/12/20 08:57:46 by ghorvath         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	get_next_line(const int fd, char **line)
 	int			ret;
 	static char	*string[FD_SIZE];
 	char		buffer[BUFF_SIZE + 1];
-	char		*temp;
+	char		*tracker;
 
 	if (fd < 0 || line == NULL)
 		return (-1);
@@ -66,9 +66,9 @@ int	get_next_line(const int fd, char **line)
 			string[fd] = ft_strdup(buffer);
 		else
 		{
-			temp = ft_strjoin(string[fd], buffer);
+			tracker = ft_strjoin(string[fd], buffer);
 			free(string[fd]);
-			string[fd] = temp;
+			string[fd] = tracker;
 		}
 		if (ft_strchr(string[fd], '\n'))
 			break ;
